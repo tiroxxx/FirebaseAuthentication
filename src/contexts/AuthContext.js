@@ -7,7 +7,7 @@ export function useAuth() {
     return useContext(AuthContext)
 }
 
-export function AuthProviuder({ children }) {
+export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
 
     function signup(email, password) {
@@ -23,7 +23,8 @@ export function AuthProviuder({ children }) {
     }, [])
 
     const value = {
-        currentUser
+        currentUser,
+        signup
     }
 
     return (
