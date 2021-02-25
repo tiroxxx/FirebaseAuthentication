@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Card, Button, Form } from "react-bootstrap"
+import { Card, Button, Form, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 
 function Signup() {
@@ -14,7 +14,7 @@ function Signup() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        if (passwordConfirmRef.current.value !== passwordConfirmRef.current.value) {
+        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError("Passwords Do not match")
         }
 
@@ -26,7 +26,7 @@ function Signup() {
         catch {
             setError("Failed to create an account")
         }
-        
+
         setLoading(false)
     }
 
@@ -36,7 +36,8 @@ function Signup() {
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Sign Up</h2>
-                    <Form>
+                    {error && <Alert variant="danger">{error}</Alert>}
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required />
@@ -49,7 +50,7 @@ function Signup() {
                             <Form.Label>Password Confirmation</Form.Label>
                             <Form.Control type="password" ref={passwordConfirmRef} required />
                         </Form.Group>
-                        <Button className="w-100" type="submit">Sign Up!</Button>
+                        <Button disabled={loading} className="w-100" type="submit">Sign Up!</Button>
                     </Form>
                 </Card.Body>
             </Card>
