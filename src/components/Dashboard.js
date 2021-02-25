@@ -1,7 +1,9 @@
-import React from 'react'
-import { Card, Button } from "react-bootstrap"
+import React, { useState } from 'react'
+import { Card, Button, Alert } from "react-bootstrap"
 
 export default function Dashboard() {
+
+    const [error, setError] = useState("");
 
     function handleLogout() {
 
@@ -12,6 +14,7 @@ export default function Dashboard() {
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Welcome</h2>
+                    {error && <Alert variant="danger">{error}</Alert>}
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
