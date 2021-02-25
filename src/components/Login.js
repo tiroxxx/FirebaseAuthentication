@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react"
 import { Card, Button, Form, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 
-export default function Signup() {
+export default function Login() {
 
     const emailRef = useRef()
     const passwordRef = useRef()
