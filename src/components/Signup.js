@@ -13,7 +13,6 @@ export default function Signup() {
     const [loading, setLoading] = useState(false)
     const history = useHistory()
 
-
     async function handleSubmit(e) {
         e.preventDefault()
 
@@ -31,10 +30,7 @@ export default function Signup() {
             setError("Failed to create an account")
             setLoading(false)
         }
-
-        
     }
-
 
     return (
         <>
